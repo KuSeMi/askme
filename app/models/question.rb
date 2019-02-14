@@ -4,5 +4,5 @@ class Question < ApplicationRecord
 
   validates :text, :user, presence: true
 
-
+  validates :text, :user, presence: true, length: { maximum: 255 }
 end

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :questions
 
   validates :email, presence: true, uniqueness: true, format:{with: VALID_EMAIL_REGEX}
-  validates :username, presence: true, uniqueness: true, format: {with: /\A\w+\z/},length:{maximum: 40}
+  validates :username, presence: true, uniqueness: true, format: {with: /\w+/},length:{maximum: 40}
 
   attr_accessor :password
 

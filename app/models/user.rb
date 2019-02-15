@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  validates :email, :username,presence: true, format:{with: VALID_EMAIL_REGEX}
-  validates :email, :username,uniqueness: true,presence: true, format: {with: /\A[\w]+\z/},length:{maximum: 40}
+  validates :email, presence: true, uniqueness: true, format:{with: VALID_EMAIL_REGEX}
+  validates :username, presence: true, uniqueness: true, format: {with: /\A\w+\z/},length:{maximum: 40}
 
   attr_accessor :password
 
@@ -24,8 +24,8 @@ class User < ApplicationRecord
 
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
 
-           self.password_hash = User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, password_salt,ITERATIONS,
-                                                                               DIGEST.length, DIGEST ))
+      self.password_hash = User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, password_salt,ITERATIONS,
+                                                                          DIGEST.length, DIGEST ))
     end
   end
 
@@ -41,7 +41,7 @@ class User < ApplicationRecord
     return nil unless user.present?
 
     hashed_password = User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(
-            password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
+      password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
 
     return user if user.password_hash == hashed_password
 

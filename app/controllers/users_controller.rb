@@ -13,9 +13,11 @@ class UsersController < ApplicationController
   end
 
   def new
+
   end
 
   def edit
+
   end
 
   def show
@@ -28,7 +30,11 @@ class UsersController < ApplicationController
 
     @questions = [
       Question.new(text: 'Как дела?', created_at: Date.parse('15.02.2019')),
-      Question.new(text: 'В чем смысл жизни?', created_at: Date.parse('15.02.2019'))
+      Question.new(text: 'В чем смысл жизни?', created_at: Date.parse('15.02.2019')),
+      Question.new(text: 'Ты кто по жИзни?', created_at: Date.parse('16.02.2019')),
+      Question.new(text: 'Соляра есть?', created_at: Date.parse('17.02.2019')),
+      Question.new(text: 'Сколько в Киеве смартфонов?', created_at: Date.parse('18.02.2019')),
+      Question.new(text: 'Как увеличить рост ВВП без смс и регистрации?', created_at: Date.parse('19.02.2019'))
     ]
 
     @new_question = Question.new

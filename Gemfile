@@ -3,11 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'uglifier'
 gem 'rails', '~> 5.2.2'
-gem 'sqlite3', '~> 1.3.6'
 gem 'jquery-rails'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
+  gem 'sqlite3', '~> 1.3.6'
   gem 'byebug'
 end
 

@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'rails_12factor'
 gem 'uglifier'
 gem 'rails', '~> 5.2.2'
 gem 'jquery-rails'

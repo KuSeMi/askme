@@ -6,8 +6,8 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  has_many :questions, dependent: :destroy
-  has_many :authored_questions, class_name: "Question", foreign_key: "author_id", dependent: :nullify
+  has_many :questions
+  has_many :authored_questions, class_name: "Question", foreign_key: :author_id
 
   validates :email, presence: true, uniqueness: true, format:{with: VALID_EMAIL_REGEX}
   validates :username, presence: true, uniqueness: true, format: {with: /\w+/},length:{maximum: 40}

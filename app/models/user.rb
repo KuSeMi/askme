@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, format:{with: VALID_EMAIL_REGEX}
   validates :username, presence: true, uniqueness: true, format: {with: /\w+/},length:{maximum: 40}
-
+  validates :bg_color, format: {with: /\A#([0-9a-f]{3}){1,2}\z/i}, allow_blank:  true
   attr_accessor :password
 
   validates_presence_of :password, on: :create

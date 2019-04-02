@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @hashtags = Hashtag.order(:name)
   end
 
   def new
@@ -54,16 +55,16 @@ class UsersController < ApplicationController
   end
 
   private
-  def authorize_user
-    reject_user unless @user == current_user
-  end
+    def authorize_user
+      reject_user unless @user == current_user
+    end
 
-  def load_user
-    @user ||= User.find params[:id]
-  end
+    def load_user
+      @user ||= User.find params[:id]
+    end
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :name, :username, :avatar_url, :bg_color)
-  end
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation,
+                                   :name, :username, :avatar_url, :bg_color)
+    end
 end

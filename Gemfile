@@ -7,6 +7,7 @@ gem 'rails_12factor'
 gem 'uglifier'
 gem 'rails', '~> 5.2.2'
 gem 'jquery-rails'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :production do
   gem 'pg'
